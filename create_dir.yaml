@@ -1,0 +1,23 @@
+---
+
+-  name: Copy and Push ClamAV Defs
+   hosts: fred
+
+
+   tasks: 
+   - name: Create a directory/s if not exist
+     file:
+       path: /var/tmp/tom/dick/harry
+       state: directory
+       mode: 0755
+       
+   - name: Create a file in new directory
+     file:
+       path: /var/tmp/tom/dick/harry/just_kidding.conf
+       state: touch
+       mode: 0666
+
+
+
+
+

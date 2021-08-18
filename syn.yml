@@ -1,0 +1,13 @@
+---
+
+-  name: Copy and Push ClamAV Defs
+   hosts: web
+
+
+   tasks: 
+   - name: Create a directory if not exist
+     file:
+       path: /var/tmp/mike
+       state: directory
+       mode: 1755
+

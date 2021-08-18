@@ -1,0 +1,27 @@
+---
+- name: Install CLAM
+  hosts: boss
+
+  tasks: 
+  - name: Install EPEL REPO
+    yum: name=epel-release state=present
+
+  - name: Lets Install CLAM!
+    yum: name=clamav state=present
+
+  - name: Install and Update CLAM Database
+    yum: name=clamav-update.x86_64 state=present
+
+  - name: Freshclam
+    command: freshclam
+
+  - name: List the CLAMSCAN Version
+    shell: clamscan -V
+    register: shell_result
+
+  - debug:
+        var: shell_result.stdout_lines
+     
+    #register: results
+
+

@@ -1,0 +1,19 @@
+---
+# tasks file for clamav_defs
+
+- name: Copy Virus Definitions Into Directory
+  hosts: web
+
+  tasks:
+  - name: Lets take those files and grab them
+    copy: 
+      src: /etc/ansible/roles/clamav_defs/files/file
+      dest: /home/mike
+      owner: mike
+      group: mike
+      mode: 0777
+
+  - name: We are fetching this time
+    fetch: 
+      src: /var/tmp/sample.txt
+      dest: /tmp/fetched

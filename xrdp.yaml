@@ -1,0 +1,22 @@
+---
+
+-  name: Install and Start XRDP
+   hosts: web
+   #remote_user: root
+   #become: yes
+
+   tasks:
+   - name: Install epel repo
+     yum: name=epel-release state=present
+
+
+   - name: test to see if selinux is running
+     command: getenforce
+     register: sestatus
+     changed_when: false
+
+   - name: Install XRDP
+     yum: name=xrdp state=present
+
+   - name: Start XRDP
+     service: name=xrdp state=started enabled=yes   
